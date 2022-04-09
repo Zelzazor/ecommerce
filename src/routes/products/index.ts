@@ -10,7 +10,7 @@ const ProductRoutes = express.Router()
 
 ProductRoutes.get('/new', isLoggedIn, newProduct)
 ProductRoutes.post('/new', [isLoggedIn, upload.single('image')], createNewProduct)
-ProductRoutes.get('/search', paginate.middleware(3,50), searchProducts)
+ProductRoutes.get('/search', paginate.middleware(10,50), searchProducts)
 ProductRoutes.post('/:uuid/add', addToCart)
 ProductRoutes.post('/:uuid/remove', removeFromCart)
 

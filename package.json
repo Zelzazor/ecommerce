@@ -12,8 +12,10 @@
     "test": "jest",
     "lint": "eslint --ext .ts,.js src/**/*.ts",
     "watch": "nodemon --watch src --watch test --exec \"yarn build\"",
-    "tsc-init": "tsc --init"
+    "tsc-init": "tsc --init",
+    "heroku-postbuild": "yarn build && yarn start"
   },
+  "heroku-run-build-script": true,
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
     "@types/cookie-parser": "^1.4.2",

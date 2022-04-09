@@ -12,6 +12,7 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     console.log(req.file);
     if(req.file!.path) {
         newImageSubmitting.imageUrl = req.file!.path;
+        newImageSubmitting.imageUrl = '/'+newImageSubmitting.imageUrl;
     }
     else {
         //@ts-ignore

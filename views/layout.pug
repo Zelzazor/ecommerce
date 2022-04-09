@@ -20,6 +20,9 @@ html(lang="en")
                 a(href="/product/search").nav-link Search 
               li.nav-item
                 a(href="/cart/").nav-link Cart
+                  if cartLength 
+                    sup 
+                      span.badge.bg-pill.bg-danger.ml-2 #{cartLength}
               if user 
                 li.nav-item 
                   a(href="/settings/user").nav-link Settings

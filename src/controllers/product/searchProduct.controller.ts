@@ -11,6 +11,10 @@ export const searchProducts = async (req: IRequest, res: Response) => {
     const { c, q } = query
     let categoryName = c as string 
     let queryString = q as string
+    let cartLength = 0;
+    if(req.cookies.cart){
+        cartLength = JSON.parse(req.cookies.cart).length
+    }
     
     if(req.session.userUuid) {
         const user = await User.findOne({ where: { uuid: req.session.userUuid } })
@@ -46,5 +50,6 @@ export const searchProducts = async (req: IRequest, res: Response) => {
         q: queryString,
         c: categoryName,
         currentPage: page,
+        cartLength
     });
 }

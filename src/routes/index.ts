@@ -19,15 +19,18 @@ routes.get('/', async (req, res) => {
         take: 6, 
         order:{ id: "DESC"}
     });
-
+    let cartLength = 0;
+    if(req.cookies.cart){
+        cartLength = JSON.parse(req.cookies.cart).length
+    }
     
     if(!req.session.userUuid){
         
-        res.render('index', { title: 'Home', submittings})
+        res.render('index', { title: 'Home', submittings, cartLength})
     }else{
         User.findOne({ where: { uuid: req.session.userUuid } })
         .then(user => {
-            res.render('index', { title: 'Home', user: user, submittings })
+            res.render('index', { title: 'Home', user: user, submittings, cartLength })
         })
         .catch(err => {
             res.status(500).json({ error: err })

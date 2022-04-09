@@ -13,7 +13,7 @@
     "lint": "eslint --ext .ts,.js src/**/*.ts",
     "watch": "nodemon --watch src --watch test --exec \"yarn build\"",
     "tsc-init": "tsc --init",
-    "heroku-postbuild": "yarn build && redis-server && yarn start"
+    "heroku-postbuild": "yarn build && yarn start"
   },
   "heroku-run-build-script": true,
   "devDependencies": {

@@ -9,6 +9,7 @@ const db = {
     database: process.env.DB_NAME,
     synchronize: process.env.DB_SYNCHRONIZE === "true",
     logging: process.env.DB_LOGGING === "true",
+    redisURL: process.env.REDISCLOUD_URL
 }
 
 const server = {

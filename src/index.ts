@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 
 // ioredis
 const Redis = require("ioredis")
-let redisClient = new Redis()
+let redisClient = new Redis(config.db.redisURL)
 
 AppDataSource.initialize().then(() => {
     console.log("Database connected")

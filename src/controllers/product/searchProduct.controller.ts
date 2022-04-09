@@ -9,8 +9,8 @@ import paginate from "express-paginate";
 export const searchProducts = async (req: IRequest, res: Response) => {
     const { query } = req
     const { c, q } = query
-    const categoryName = c as string
-    const queryString = q as string
+    let categoryName = c as string 
+    let queryString = q as string
     
     if(req.session.userUuid) {
         const user = await User.findOne({ where: { uuid: req.session.userUuid } })
@@ -28,6 +28,8 @@ export const searchProducts = async (req: IRequest, res: Response) => {
             ...(queryString) && { title: Raw(alias=>`LOWER(${alias}) LIKE '%${queryString.toLowerCase()}%'`) }
         }
     });
+    categoryName = categoryName ? categoryName : ''
+    queryString = queryString ? queryString : ''
     const itemCount = count;
     const pageCount = Math.ceil(itemCount / Number(req.query.limit));
     const page = Number(req.query.page);

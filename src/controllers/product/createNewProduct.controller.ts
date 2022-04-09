@@ -9,7 +9,6 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     const category = await Category.findOne({where: {uuid: req.body.category}});
     const newProduct = Submittings.create();
     const newImageSubmitting = ImagesSubmitting.create();
-    console.log(req.file);
     if(req.file!.path) {
         newImageSubmitting.imageUrl = req.file!.path;
         newImageSubmitting.imageUrl = '/'+newImageSubmitting.imageUrl;
@@ -29,6 +28,5 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     const createdProduct = await newProduct.save();
     newImageSubmitting.submittings = createdProduct;
     newImageSubmitting.save();
-    console.log(category);
     return res.redirect('/');
 }

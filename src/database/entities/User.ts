@@ -39,7 +39,7 @@ export class User extends BaseEntity {
   @OneToMany(() => CommentsVendor, (commentsVendor) => commentsVendor.vendor)
   commentsVendors: CommentsVendor[];
 
-  @OneToMany(() => Orders, (orders) => orders.clientd)
+  @OneToMany(() => Orders, (orders) => orders.client)
   orders: Orders[];
 
   @OneToMany(() => Orders, (orders) => orders.vendor)

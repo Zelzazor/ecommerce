@@ -1,6 +1,6 @@
 import express from 'express'
 import { isLoggedIn } from '../../middlewares/auth/isLoggedin.middleware';
-import { newProduct, createNewProduct, searchProducts, addToCart, removeFromCart  } from '../../controllers/product';
+import { newProduct, createNewProduct, searchProducts, addToCart, removeFromCart, productDetail  } from '../../controllers/product';
 
 import paginate from 'express-paginate';
 
@@ -13,6 +13,7 @@ ProductRoutes.post('/new', [isLoggedIn, upload.single('image')], createNewProduc
 ProductRoutes.get('/search', paginate.middleware(10,50), searchProducts)
 ProductRoutes.post('/:uuid/add', addToCart)
 ProductRoutes.post('/:uuid/remove', removeFromCart)
+ProductRoutes.get('/:uuid', productDetail)
 
 
 

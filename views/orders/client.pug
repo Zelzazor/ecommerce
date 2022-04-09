@@ -1,0 +1,22 @@
+extends ../layout    
+block content 
+    h3 Orders as Client 
+    for order in ordersAsClient 
+        div.card.col-12.mb-3
+            div.card-body
+                .d-flex.justify-content-between 
+                .d-flex.justify-content-between
+                    h5.card-title #{order.submit.title}
+                    p.card-text $#{order.unitPrice}
+                .d-flex.justify-content-between 
+                    p.card-text Order ID: #{order.uuid}
+                    p.card-text #{order.orderDate}
+                .d-flex.justify-content-between
+                    p.card-text Stock Acquired: #{order.stockAcquired}
+                    p.badge.bg-primary.mr-2 Vendor: #{order.vendor.firstName + " " + order.vendor.lastName}
+    div.d-flex.justify-content-center.align-items-baseline.mt-3
+        for page in pages
+            if currentPage !== page.number
+                a.btn.btn-outline-primary.me-1(href='/orders/client?page='+page.number) #{page.number}
+            else
+                p.btn.btn-primary.me-1(href='/orders/client?page='+page.number) #{page.number}

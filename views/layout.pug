@@ -25,6 +25,9 @@ html(lang="en")
                       span.badge.bg-pill.bg-danger.ml-2 #{cartLength}
               if user 
                 li.nav-item 
+                  a(href="/orders").nav-link Orders
+              if user 
+                li.nav-item 
                   a(href="/settings/user").nav-link Settings
               li.nav-item
                 if(user)

@@ -3,6 +3,8 @@ import AuthRoutes from './auth';
 import SettingRoutes from './settings';
 import ProductRoutes from './products';
 import CartRoutes from './cart';
+import CheckoutRoutes from './checkout';
+import OrderRoutes from './orders';
 import { User } from '../database/entities/User';
 import { Submittings } from '../database/entities/Submittings';
 
@@ -12,6 +14,8 @@ routes.use('/auth', AuthRoutes)
 routes.use('/settings', SettingRoutes)
 routes.use('/product', ProductRoutes)
 routes.use('/cart', CartRoutes)
+routes.use('/checkout', CheckoutRoutes)
+routes.use('/orders', OrderRoutes)
 
 routes.get('/', async (req, res) => {
     const submittings = await Submittings.find({

@@ -1,0 +1,16 @@
+extends ../layout
+block content
+    .d-flex.flex-column.flex-md-row.justify-content-center
+        div
+            img(src=product.imagesSubmittings[0].imageUrl, alt=title width="500px").img-card-other
+        div.flex-fill.ms-md-5.mt-3.mt-md-0
+            .d-flex.justify-content-between.align-items-center
+                h1 #{title}
+                div
+                    span.badge.bg-primary.me-1 Seller: #{product.users.firstName + " " + product.users.lastName}
+                    span.badge.bg-secondary #{product.category.name}
+            p #{product.description}
+            p $#{product.unitPrice}
+            p Stock left: #{product.stock}
+                form(method='post' action='/product/'+product.uuid+'/add')
+                    input.btn.btn-success(type='submit' value='Add to cart')

@@ -23,8 +23,6 @@ if(!config.aws.S3Active){
         cb(null, `./uploads/${req.user!.uuid}`)
     },
     filename: function (_req, file, cb) {
-        console.log(path.extname(file.originalname));
-        console.log(path.basename(file.originalname, path.extname(file.originalname)));
         cb(null, `${path.basename(file.originalname, path.extname(file.originalname))}-${Date.now()}${path.extname(file.originalname)}`)
     }
 })

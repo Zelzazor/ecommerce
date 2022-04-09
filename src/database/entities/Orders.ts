@@ -18,7 +18,7 @@ export class Orders extends BaseEntity {
   @PrimaryGeneratedColumn({ type: "bigint", name: "id" })
   id: string;
 
-  @Column("date", { name: "orderDate" })
+  @Column("timestamp", { name: "orderDate" })
   orderDate: string;
 
   @Column("numeric", { name: "unitPrice", precision: 10, scale: 2 })
@@ -34,8 +34,8 @@ export class Orders extends BaseEntity {
     onDelete: "RESTRICT",
     onUpdate: "RESTRICT",
   })
-  @JoinColumn([{ name: "clientd", referencedColumnName: "id" }])
-  clientd: User;
+  @JoinColumn([{ name: "clientId", referencedColumnName: "id" }])
+  client: User;
 
   @ManyToOne(() => Submittings, (submittings) => submittings.orders, {
     onDelete: "RESTRICT",

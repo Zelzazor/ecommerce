@@ -28,7 +28,6 @@ app.use(express.static('public'));
 app.use('/uploads', express.static('uploads'));
 app.use('/stylesheets', express.static(path.join(path.dirname(require.resolve('bootstrap')), '../../dist/css')));
 app.use('/javascripts', express.static(path.dirname(require.resolve('bootstrap'))));
-console.log(path.join(path.dirname(require.resolve('bootstrap')), '../../dist/css'));
 
 
 app.use(cookieParser());

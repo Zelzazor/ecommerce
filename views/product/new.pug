@@ -1,0 +1,27 @@
+extends ../layout
+block content 
+    h1= title
+    form(action="new", method="post" enctype="multipart/form-data") 
+        .form-group
+            label(for="name") Name
+            input(type="text" name="name" id="name" class="form-control" placeholder="Name" required)
+        .form-group
+            label(for="description") Description
+            textarea(cols="30", rows="10" name="description" id="description" class="form-control" placeholder="Description" required)
+        .form-group
+            label(for="category") Category
+            select(name="category" id="category" class="form-control" required)
+                for category in categories
+                    option(value=category.uuid) #{category.name}
+        .form-group
+            label(for="price") Price
+            input(type="number" name="price" id="price" class="form-control" placeholder="Price" required)
+        .form-group
+            label(for="stock") Stock
+            input(type="number" name="stock" id="stock" class="form-control" placeholder="Stock" required)
+        .form-group
+            label(for="image") Image
+            input(type="file" name="image" id="image" class="form-control" placeholder="Image" accept="image/*" required)
+        
+        .form-group
+            input(type="submit" value="Create" class="btn btn-primary mt-3")

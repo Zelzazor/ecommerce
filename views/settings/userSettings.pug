@@ -1,0 +1,18 @@
+extends ../layout
+
+block content 
+    h1 User Settings
+    p Welcome, #{user.firstName}!
+    p Your email is #{user.email}
+    form(method='post' action='/settings/user')
+        .form-group
+            label(for='email') Email
+            input(type='email' class='form-control' name='email' value=user.email)
+        .form-group 
+            label(for='name') First Name
+            input(type='text' class='form-control' name='firstName' value=user.firstName)
+        .form-group 
+            label(for='lastName') Last Name
+            input(type='text' class='form-control' name='lastName' value=user.lastName)
+        .form-group
+            input.mt-3(type='submit' class='btn btn-primary' value='Save')

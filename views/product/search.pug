@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+    h1= title
+    form(method='get' action='/product/search').row.mb-3
+        .form-group.mb-2
+            label.mb-2(for='c') Category 
+            select(name='c' id='c').form-control
+                option(value='') Select Category
+                for category in categories
+                    option(value=category.name) #{category.name}
+        .input-group
+            input.form-control.col-auto(type='text', name='q', placeholder='Search')
+            input.col-auto.btn.btn-primary(type='submit', value='Search')
+    
+    for product in submittings
+        .d-flex.border.mb-1.rounded(style="height: 300px;")
+            div.d-flex
+                img.img-card-other(src='/'+product.imagesSubmittings[0].imageUrl, width="250px")
+            .d-flex.w-100
+                .d-flex.flex-column.m-5.w-100
+                    .d-flex.justify-content-between
+                        span.badge.bg-secondary= product.category.name
+                        span.badge.bg-primary Seller: #{product.users.firstName + " " + product.users.lastName}
+                    .d-flex.justify-content-between
+                        h3= product.title
+                        h3 $#{product.unitPrice}
+                    .d-flex.justify-content-end 
+                        p.card-text Stock left: #{product.stock}
+                    .d-flex.align-items-end.w-100.h-100
+                        a.btn.btn-primary.w-100.me-2(href='/product/'+product.uuid) Details
+                        form(method='post' action='/product/'+product.uuid+'/add').w-100
+                            input.btn.btn-success.w-100(type='submit' value='Add to cart')
+                    
+    div.d-flex.justify-content-center.align-items-baseline.mt-3
+        for page in pages
+            if currentPage !== page.number
+                a.btn.btn-outline-primary.me-1(href='/product/search?q='+q+'&c='+c+'&page='+page.number) #{page.number}
+            else
+                p.btn.btn-primary.me-1(href='/product/search?page='+page.number+'&q='+q+'&c='+c) #{page.number}
+
+
+

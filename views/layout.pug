@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+  head
+    title Ecommerce - #{title}
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet' href='/stylesheets/bootstrap.min.css')
+  body
+    header
+      nav.navbar.navbar-expand-sm.navbar-toggleable-sm.navbar-light.bg-white.border-bottom.box-shadow.mb-3 
+        div.container
+          a(href="/").navbar-brand Ecommerce 
+          button(type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation").navbar-toggler
+            span.navbar-toggler-icon
+          div.navbar-collapse.collapse.d-sm-inline-flex.justify-content-between
+            ul.navbar-nav.flex-grow-1.justify-content-end
+              li.nav-item
+                a(href="/").nav-link Home
+              li.nav-item
+                a(href="/product/search").nav-link Search 
+              li.nav-item
+                a(href="/cart/").nav-link Cart
+              if user 
+                li.nav-item 
+                  a(href="/settings/user").nav-link Settings
+              li.nav-item
+                if(user)
+                  a(href="/auth/logout").nav-link.text-dark Logout 
+                else
+                  a(href="/auth/login").nav-link Login
+              if !user
+                li.nav-item
+                  a(href="/auth/register").nav-link Register            
+    div.container.container-main
+      main.pb-3
+        block content
+    footer.border-top.text-muted
+      div.container.my-3 &copy; 2021 - Demo
+    script(src="/javascripts/bootstrap.min.js") 

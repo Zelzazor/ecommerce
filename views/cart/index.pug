@@ -1,0 +1,19 @@
+extends ../layout
+block content 
+    .d-flex.flex-column
+        h1= title
+        for product in cart 
+            div.card.col-12.mb-3
+                - const url = `/product/${product.uuid}`
+                div(href=url).card-body
+                    .d-flex.justify-content-between 
+                    .d-flex.justify-content-between
+                        h5.card-title #{product.title}
+                        p.card-text $ #{product.unitPrice}
+                    p.card-text Stock left: #{product.stock}
+                    .d-flex
+                        a.btn.btn-primary.w-100.me-2(href=url) Details
+                        form(method='post' action='/product/'+product.uuid+'/remove').w-100
+                            input.btn.btn-danger.w-100(type='submit' value='Remove from cart')
+        a.form-control.btn.btn-success(href='/product/cart/checkout') Checkout
+        

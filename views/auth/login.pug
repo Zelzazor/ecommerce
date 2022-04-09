@@ -1,0 +1,15 @@
+extends ../layout 
+block content
+    h1= title
+    form(action="/auth/login", method="post")
+        .form-group
+            label(for="email") Email
+            input(type="email" name="email" id="email" class="form-control" placeholder="Email")
+        .form-group
+            label(for="password") Password
+            input(type="password" name="password" id="password" class="form-control" placeholder="Password")
+        .form-group
+            input(type="submit" value="Login" class="btn btn-primary mt-3")
+    p.mt-3        
+     a.me-2(href="/auth/register") Register
+     a.ms-2(href="/auth/reset") Reset Password

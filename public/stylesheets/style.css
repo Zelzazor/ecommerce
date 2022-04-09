@@ -73,5 +73,15 @@ body {
   object-fit: cover;
 }
 
+.height {
+  height: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .height{
+    height: 350px;
+  }
+}
+
 
 

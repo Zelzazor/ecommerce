@@ -13,7 +13,7 @@ const db = {
 }
 
 const server = {
-    port: process.env.SERVER_PORT,
+    port: process.env.PORT || process.env.SERVER_PORT,
     jwtSecret: process.env.JWT_SECRET,
     sessionSecret: process.env.SESSION_SECRET,
     isProduction: process.env.NODE_ENV === "production",

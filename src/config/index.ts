@@ -12,6 +12,14 @@ const db = {
     redisURL: process.env.REDISCLOUD_URL
 }
 
+const aws = {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    S3Active:  process.env.S3_ACTIVE === "true",
+    bucket: process.env.S3_BUCKET,
+    region: process.env.AWS_REGION
+}
+
 const server = {
     port: process.env.PORT || process.env.SERVER_PORT,
     jwtSecret: process.env.JWT_SECRET,
@@ -21,6 +29,7 @@ const server = {
 
 export const config = {
     db,
-    server
+    server,
+    aws
 }
 

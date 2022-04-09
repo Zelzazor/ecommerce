@@ -9,7 +9,14 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     const category = await Category.findOne({where: {uuid: req.body.category}});
     const newProduct = Submittings.create();
     const newImageSubmitting = ImagesSubmitting.create();
-    newImageSubmitting.imageUrl = req.file!.path;
+    console.log(req.file);
+    if(req.file!.path) {
+        newImageSubmitting.imageUrl = req.file!.path;
+    }
+    else {
+        //@ts-ignore
+        newImageSubmitting.imageUrl = req.file!.location;
+    }
     newProduct.title = name;
     newProduct.description = description;
     newProduct.unitPrice = price;

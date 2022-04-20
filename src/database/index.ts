@@ -20,7 +20,5 @@ export const AppDataSource = new DataSource({
     database: config.db.database,
     synchronize: config.db.synchronize,
     logging: config.db.logging,
-    entities: [User, VendorDetails, Submittings, Shipments, Role, Orders, ImagesSubmitting, CommentsVendor, CommentsSubmitting, Category],
-    subscribers: [],
-    migrations: [],
+    entities: [User, VendorDetails, Submittings, Shipments, Role, Orders, ImagesSubmitting, CommentsVendor, CommentsSubmitting, Category]
 })

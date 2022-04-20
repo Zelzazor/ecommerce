@@ -19,8 +19,6 @@ export const productDetail = async (req: IRequest, res: Response) => {
         relations: ['imagesSubmittings', 'category', 'users'] 
     });
 
-    submitting?.imagesSubmittings
-
     return res.render('product/detail', {user: req.user, title: submitting!.title, product: submitting, cartLength});
 
 }

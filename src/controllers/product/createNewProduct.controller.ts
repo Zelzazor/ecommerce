@@ -10,8 +10,7 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     const newProduct = Submittings.create();
     const newImageSubmitting = ImagesSubmitting.create();
     if(req.file!.path) {
-        newImageSubmitting.imageUrl = req.file!.path;
-        newImageSubmitting.imageUrl = '/'+newImageSubmitting.imageUrl;
+        newImageSubmitting.imageUrl = '/'+req.file!.path;
     }
     else {
         //@ts-ignore
@@ -23,8 +22,7 @@ export const createNewProduct = async (req: IRequest, res: Response) => {
     newProduct.category = category!;
     newProduct.stock = stock;
     newProduct.users = req.user!;
-
-    newProduct.imagesSubmittings;
+    
     const createdProduct = await newProduct.save();
     newImageSubmitting.submittings = createdProduct;
     newImageSubmitting.save();

@@ -6,7 +6,7 @@ import { Response, Request } from "express";
 
 export const signIn = async (req: Request, res: Response) => {
     try {
-        const { email, password } = req.body
+        const { email, password } = req.body;
         const user = await User.findOne({ where: {email: email }});
         if (user) {
             //check if password matches
